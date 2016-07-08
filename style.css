@@ -1,16 +1,17 @@
 ol {
   width: 440px;
+  height:440px;
   margin: 0 auto;
-  padding: 0;
+  padding: 50px;
 }
 
 li {
-  width: 100px;
-  height: 100px;
+  /*width: 136px;*/
+  /*height: 136px;*/
   float: left;
   margin: 5px;
   padding: 0;
-  background-color: red;
+  /*background-color: red;*/
   list-style: none;
   text-align:center;
   font-size:2em;
@@ -19,8 +20,10 @@ li {
 
 .square {
   background-color: lightblue;
+  transition: width 2s, height 2s, transform 2s;
 }
 
 .blank {
-  background-color:white;
+  opacity: 0;
+  transform: rotate(360deg);
 }
