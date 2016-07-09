@@ -4,11 +4,13 @@ var squarePixels = Math.floor( (440 - (rootOfSquares*2*5))/rootOfSquares );
 
 var gridArray = [];
 var winArray = [];
-var playerArray = [];
 
 $ol = $("ol");
 $lis = {};
 $startButton = $("#startButton")
+$easyButton = $("#easyButton")
+$normalButton = $("#normalButton")
+$hardButton = $("#hardButton")
 
 function generateRandomColor() {
   var x=Math.round(0xffffff * Math.random()).toString(16);
@@ -39,8 +41,9 @@ function CreateSquares(){
     // setTimeout(function(){
     //   shuffleIds();
     // }, 2000)
-
   }
+
+
 
   //Add event listeners so that clicked square swaps classes and Ids.
   var gridSize = Math.sqrt($("li").length);
@@ -108,8 +111,17 @@ function shuffleIds() {
   var randomizedDataIndexes = shuffleArray(liDataIndexes);
 
   randomizedDataIndexes.forEach(function(id, i) {
+
+    var randomColor = generateRandomColor();
+
     $lis.eq(i).attr("data-index", id).html(id);
     $lis.eq(i).attr("id", "square"+id).html(id);
+    $lis.eq(i).attr("style", 
+      "width:"+squarePixels+"px;"+
+      "height:"+squarePixels+"px;"+  
+      "background-color:"+randomColor+";" 
+      );
+
   });
 
   resetClasses();
@@ -128,19 +140,19 @@ function resetClasses() {
 }
 
 //function to randomize Lis. 
-$.fn.randomize = function(selector){
-  var $elems = selector ? $(this).find(selector) : $(this).children(),
-  $parents = $elems.parent();
+// $.fn.randomize = function(selector){
+//   var $elems = selector ? $(this).find(selector) : $(this).children(),
+//   $parents = $elems.parent();
 
-  $parents.each(function(){
-    $(this).children(selector).sort(function(){
-      return Math.round(Math.random()) - 0.5;
+//   $parents.each(function(){
+//     $(this).children(selector).sort(function(){
+//       return Math.round(Math.random()) - 0.5;
 
-    }).detach().appendTo(this);
-  });
+//     }).detach().appendTo(this);
+//   });
 
-  return this;
-};
+//   return this;
+// };
 
 
 

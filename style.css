@@ -26,7 +26,9 @@ li {
   /*background-color: lightblue;*/
   transition: width 2s, height 2s, transform 2s;
   border-radius: 100%;
-  
+  color:white;
+  text-shadow: 2px 2px #5A514F;  
+  box-shadow: 1px 1px 1px #5A514F;
 }
 
 .blank {
