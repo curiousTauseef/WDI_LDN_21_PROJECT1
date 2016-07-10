@@ -1,12 +1,10 @@
+//background music to play on loop
 var backgroundAudio = new Audio("sounds/jazz-loop.wav");
-
 backgroundAudio.play();
 setInterval(function(){
   backgroundAudio.play();
   console.log("music playing");
 }, 68000);
-
-
 
 
 var numberOfSquares = 0;
@@ -15,7 +13,9 @@ var playerArray = [];
 var counter;
 // var playerTime = "";
 // var gameInPlay = false;
-var count = 10;
+var count = 60;
+var playerScore = 0;
+var computerScore = 0;
 
 
 $ol = $("ol");
@@ -135,6 +135,7 @@ function checkForWin() {
     count = 75;
     console.log(playerTime);
     console.log(count);
+    playerScore++;
 
   }
 }
@@ -178,7 +179,7 @@ function shuffleIds() {
   });
 
   resetClasses();
-  // activateTimer();
+  activateTimer();
 
 }
 
@@ -208,27 +209,17 @@ function activateTimer(){
     minutes %= 60;
     hours %= 60;
 
-
-    if (seconds > 9) {
-      $("#timer").text(seconds+ " seconds remaining")
-    }
-    else if (seconds <= 9) {
-      $("#timer").text(seconds+ " seconds remaining")
-    }
+    $("#timer").text(seconds+ " seconds remaining")
+  
 
     if (count === 0) {
 
       alert("You ran out of time; the computer messes up your game board!");
+      clearInterval(counter);
+      count = 60;
       shuffleIds();
 
-      count = 10;
-
-    }
-    
-    if (count === -1) {
-      clearInterval(counter);  
-      return;
-    }
+    }    
   }
 }
 

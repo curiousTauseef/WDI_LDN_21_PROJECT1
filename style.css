@@ -1,7 +1,13 @@
-div#container {
+div#container{
 margin: 0 auto;
 text-align:center;
 }
+
+
+h1 {
+  margin: 0 auto;
+  text-align:center;
+} 
 
 ol {
   width: 440px;
@@ -25,6 +31,7 @@ li {
   color:white;
   text-shadow: 2px 2px #5A514F;  
   box-shadow: 1px 1px 1px #5A514F;
+  font-family: 'Codystar', cursive;
 }
 
 .blank {
@@ -37,8 +44,6 @@ li {
   border-radius: 100%;
   color: rgba(255,0,0,0.0);
 }
-
-
 
 
 /*animate.css stylesheet*/
