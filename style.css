@@ -1,9 +1,14 @@
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('./fonts/Pokemon Solid.ttf');
+}
+
 #shuffleAlert, #winAlert, button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close {
   display:none;
 }
 
 body {
-  background-image:url(http://i.stack.imgur.com/AvgOa.png);
+  background-image:url(./images/background.png);
   background-size:cover;
   background-position:center;
   background-repeat: no-repeat;
@@ -15,15 +20,34 @@ body {
   border-radius: 5px;
   color: white;
   background: linear-gradient(#fef380, #ffbf00);
-  text-shadow: 1px 1px 1px #5A514F;  
+  text-shadow: 1px 1px 1px #5A514F;
+  margin: 0px 10px 0px 10px;
+  width: 120px;  
+}
+
+#resetGame {
+  width: 200px;  
 }
 
 #playerScore {
   float:left;
+  font-family: 'Pokemon Solid';
+  font-size: 1.5em;
+  letter-spacing: 5px;
 }
 
 #computerScore {
   float: right;
+  font-family: 'Pokemon Solid';
+  font-size: 1.5em;
+  letter-spacing: 5px;
+}
+
+#timer {
+  font-family: 'Pokemon Solid';
+  font-size: 1.5em;
+  letter-spacing: 5px;
+  padding-top:10px;
 }
 
 div#container{
@@ -35,13 +59,17 @@ width: 480px;
 h1 {
   margin: 0 auto;
   text-align:center;
+  font-family: 'Pokemon Solid';
+  font-size:3em;
+  letter-spacing: 5px;
 } 
 
 ol {
   width: 440px;
   height:440px;
   margin: 0 auto;
-  padding: 50px 0px;
+  padding: 25px;
+  clear:both;
 }
 
 li {

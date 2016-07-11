@@ -8,13 +8,13 @@
   <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
   <script src="jquery-ui.min.js"></script>
 
-  <title>Jason's Game</title>
+  <title>Tile Switch</title>
 </head>
 <body>
 
   <div id="dialog-message" title="How To Play">
     <p>
-      Put the balls into numeric order. Pikachu will swap places with the selected ball. To win the game all the balls must be in order with Pikachu in the first space. To begin the game select a difficulty mode.
+      You have 1 minute to put the tiles into numeric order. Pikachu will swap places with the selected tile. To win the game all the tiles must be in order with Pikachu in the first space. To begin the game select a difficulty mode.
     </p>
   </div>
 
@@ -32,14 +32,18 @@
 
 
   <div id="container">
-  <h1>Game thing</h1>
+  <h1>Tile Switch</h1>
     <button class= "mode" id="easyButton">EASY</button>
     <button class= "mode" id="normalButton">NORMAL</button>
     <button class= "mode" id="hardButton">HARD</button>
-
+    
     <div id="timer"></div>
-    <div id="playerScore"></div>
-    <div id="computerScore"></div>
+
+    <div id="scoreContainer">
+      <div id="playerScore"></div>
+      <div id="computerScore"></div>
+    </div>
+
     <ol>
     </ol>
 

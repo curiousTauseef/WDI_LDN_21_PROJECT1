@@ -17,7 +17,6 @@ $(function() {
   });
 });
 
-
 var numberOfSquares = 0;
 var gridArray = [];
 var playerArray = [];
@@ -25,7 +24,6 @@ var counter;
 var count;
 var playerScore = 0;
 var computerScore = 0;
-
 
 $ol = $("ol");
 $lis = {};
@@ -90,7 +88,6 @@ function CreateSquares(){
 
     }
 
-
   //Add event listeners so that clicked square swaps classes and Ids.
   var gridSize = Math.sqrt($("li").length);
 
@@ -129,13 +126,11 @@ function CreateSquares(){
 function checkForWin() { 
   console.log(playerArray)
   if (gridArray.toString() === playerArray.toString()) {
-    // alert("You Win!");
     winAlert();
+    var winGameSound = new Audio("sounds/win-game.wav");
+    winGameSound.play();
     clearInterval(counter);
-    var playerTime = count;
     resetCount();
-    console.log(playerTime);
-    console.log(count);
     playerScore++;
     $("#playerScore").text("You = " + playerScore);
     $("#computerScore").text("Pikachu = " +computerScore);
@@ -225,6 +220,8 @@ function activateTimer(){
       $("#playerScore").text("You = " + playerScore);
       clearInterval(counter);
       resetCount();
+      var gameOverSound = new Audio("sounds/game-over.wav");
+      gameOverSound.play();
     }    
   }
 }
@@ -277,7 +274,7 @@ function winAlert(){
 }
 
 function resetCount() {
-  count = 20;
+  count = 60;
 } 
 
 
