@@ -1,4 +1,4 @@
-#shuffleAlert {
+#shuffleAlert, #winAlert, button.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close {
   display:none;
 }
 
@@ -18,9 +18,18 @@ body {
   text-shadow: 1px 1px 1px #5A514F;  
 }
 
+#playerScore {
+  float:left;
+}
+
+#computerScore {
+  float: right;
+}
+
 div#container{
 margin: 0 auto;
 text-align:center;
+width: 480px;
 }
 
 h1 {
@@ -32,7 +41,7 @@ ol {
   width: 440px;
   height:440px;
   margin: 0 auto;
-  padding: 50px;
+  padding: 50px 0px;
 }
 
 li {

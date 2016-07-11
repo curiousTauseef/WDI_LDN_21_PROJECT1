@@ -22,7 +22,7 @@ var numberOfSquares = 0;
 var gridArray = [];
 var playerArray = [];
 var counter;
-var count = 30;
+var count;
 var playerScore = 0;
 var computerScore = 0;
 
@@ -129,10 +129,11 @@ function CreateSquares(){
 function checkForWin() { 
   console.log(playerArray)
   if (gridArray.toString() === playerArray.toString()) {
-    alert("You Win!");
+    // alert("You Win!");
+    winAlert();
     clearInterval(counter);
     var playerTime = count;
-    count = 60;
+    resetCount();
     console.log(playerTime);
     console.log(count);
     playerScore++;
@@ -181,7 +182,7 @@ function shuffleIds() {
 
   resetClasses();
   activateTimer();
-
+  resetCount();
 }
 
 function resetClasses() {
@@ -192,7 +193,7 @@ function resetClasses() {
   $lis.attr("class", "square animated flipInY");
   $lis.filter("#square0").attr("class", "blank animated infinite pulse");
   
-  }, 100);
+  }, 500);
 }
 
 function activateTimer(){
@@ -218,16 +219,12 @@ function activateTimer(){
   
 
     if (count === 0) {
-
-      // alert("You ran out of time; the Pikachu messes up your game board!");
       shuffleAlert();
       computerScore++;
       $("#computerScore").text("Pikachu = " +computerScore);
       $("#playerScore").text("You = " + playerScore);
       clearInterval(counter);
-      count = 30;
-      // shuffleIds();
-
+      resetCount();
     }    
   }
 }
@@ -243,10 +240,9 @@ function resetGame() {
   $("#computerScore").text("");
   $("#playerScore").text("");
   clearInterval(counter);
-  count = 30;
+  resetCount();
   $("#timer").text("");
 }
-
 
 function shuffleAlert(){
   $( "#shuffleAlert" ).dialog({
@@ -264,7 +260,25 @@ function shuffleAlert(){
   });
 }
 
+function winAlert(){
+  $( "#winAlert" ).dialog({
+    modal: true,
+    buttons: {
+      "Keep Playing": function() {
+        $( this ).dialog( "close" );
+        shuffleIds();
+      },
+      "Quit": function() {
+        $( this ).dialog( "close" );
+        resetGame();
+      }
+    }
+  });
+}
 
+function resetCount() {
+  count = 20;
+} 
 
 
 
