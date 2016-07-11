@@ -4,18 +4,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="jquery-ui.min.css">
   <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
 
-  <title>Puzzle</title>
+  <title>Jason's Game</title>
 </head>
 <body>
 
+  <div id="dialog-message" title="How To Play">
+    <p>
+      Put the balls into numeric order. Pikachu will swap places with the selected ball. To win the game all the balls must be in order with Pikachu in the first space. To begin the game select a difficulty mode.
+    </p>
+  </div>
+
+  <div id="shuffleAlert" title="Game Over">
+    <p>
+      You took too long. Pikachu messes up your game board.
+    </p>
+  </div>
+
+
   <div id="container">
-  <h1>The most AMAZING game ever</h1>
-  <p>Put the balls into numeric order. Pikachu will swap places with the selected ball. To win the game all the balls must be in order with Pikachu in the first space.</p>
-    <button id="easyButton">EASY</button>
-    <button id="normalButton">NORMAL</button>
-    <button id="hardButton">HARD</button>
+  <h1>Game thing</h1>
+    <button class= "mode" id="easyButton">EASY</button>
+    <button class= "mode" id="normalButton">NORMAL</button>
+    <button class= "mode" id="hardButton">HARD</button>
 
     <div id="timer"></div>
     <div id="playerScore"></div>
@@ -23,7 +37,7 @@
     <ol>
     </ol>
 
-    <button>RESET GAME</button>
+    <button class="mode" id="resetGame">RESET GAME</button>
   </div>
 
 <script type="text/javascript" src="main.js"></script>

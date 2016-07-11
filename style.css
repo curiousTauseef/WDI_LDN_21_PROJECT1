@@ -1,8 +1,27 @@
+#shuffleAlert {
+  display:none;
+}
+
+body {
+  background-image:url(http://i.stack.imgur.com/AvgOa.png);
+  background-size:cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  min-height: 750px;
+}
+
+.mode {
+  font-size: 1.2em;
+  border-radius: 5px;
+  color: white;
+  background: linear-gradient(#fef380, #ffbf00);
+  text-shadow: 1px 1px 1px #5A514F;  
+}
+
 div#container{
 margin: 0 auto;
 text-align:center;
 }
-
 
 h1 {
   margin: 0 auto;
@@ -39,7 +58,7 @@ li {
   /*transform: rotate(360deg);*/
   background-image: url(./images/pika.gif-c200);
   background-size:cover;
-  background-color: white !important;
+  background-color: rgba(255, 255, 255, 0.0) !important;
   background-position: center;
   border-radius: 100%;
   color: rgba(255,0,0,0.0);

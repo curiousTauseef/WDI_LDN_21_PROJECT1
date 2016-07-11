@@ -3,17 +3,26 @@ var backgroundAudio = new Audio("sounds/jazz-loop.wav");
 backgroundAudio.play();
 setInterval(function(){
   backgroundAudio.play();
-  console.log("music playing");
 }, 68000);
+
+//jquery ui modal message on pageload; how to play the game.
+$(function() {
+  $( "#dialog-message" ).dialog({
+    modal: true,
+    buttons: {
+      Ok: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+});
 
 
 var numberOfSquares = 0;
 var gridArray = [];
 var playerArray = [];
 var counter;
-// var playerTime = "";
-// var gameInPlay = false;
-var count = 60;
+var count = 30;
 var playerScore = 0;
 var computerScore = 0;
 
@@ -33,13 +42,6 @@ function generateRandomColor() {
   var color = "#" + z1 + x;
   return color;
 }
-
-// var timeOut = function() {
-//   setInterval(function(){ 
-//     alert("You ran out of time. The computer messes up your board"); 
-//     shuffleIds();
-//   }, 10000);
-// }
 
 $easyButton.on("click", function() {
   if ($("li").length === 0) {
@@ -78,16 +80,14 @@ function CreateSquares(){
   //loop to create squares
     for (var i = 0; i < numberOfSquares; i++) {
 
-      var randomColor = generateRandomColor();
-
       if(i === 0) {
         $ol.append("<li id='square" + i + "' class='blank animated infinite pulse' style='width:" + squarePixels + "px; height:"+squarePixels +"px;' data-index='"+i+"'>" + i + "</li>");
       }
       else {
-      $ol.append("<li id='square" + i + "' class='square animated flipInY' style='width:" + squarePixels + "px; height:"+squarePixels +"px; background-color:"+randomColor+";   ' data-index='"+i+"' >" + i + "</li>");
+      $ol.append("<li id='square" + i + "' class='square animated flipInY' style='width:" + squarePixels + "px; height:"+squarePixels +"px;' data-index='"+i+"' >" + i + "</li>");
       }
       gridArray.push(i);
-      gameInPlay = true;   
+
     }
 
 
@@ -108,7 +108,7 @@ function CreateSquares(){
     var blankSquareIndex = $(".blank").index();
     var blankSquareDataIndex = $(".blank").attr("data-index");
     
-
+    // commented out if condition below as it makes game too hard. 
     // if(clickedIndex === blankSquareIndex+1 || clickedIndex === blankSquareIndex+gridSize || clickedIndex === blankSquareIndex-1 || clickedIndex === blankSquareIndex-gridSize) {
       
       blankSquare.attr("class", "square animated flipInY").attr("data-index",clickedSquareDataIndex).attr("style", clickedStyle).html(clickedSquareDataIndex);
@@ -132,11 +132,12 @@ function checkForWin() {
     alert("You Win!");
     clearInterval(counter);
     var playerTime = count;
-    count = 75;
+    count = 60;
     console.log(playerTime);
     console.log(count);
     playerScore++;
-
+    $("#playerScore").text("You = " + playerScore);
+    $("#computerScore").text("Pikachu = " +computerScore);
   }
 }
 
@@ -191,10 +192,8 @@ function resetClasses() {
   $lis.attr("class", "square animated flipInY");
   $lis.filter("#square0").attr("class", "blank animated infinite pulse");
   
-  }, 500);
+  }, 100);
 }
-
-
 
 function activateTimer(){
   counter = setInterval(timer, 1000); //1000 will  run it every 1 second
@@ -209,20 +208,61 @@ function activateTimer(){
     minutes %= 60;
     hours %= 60;
 
-    $("#timer").text(seconds+ " seconds remaining")
+    if (count>9) {
+      $("#timer").text("00:"+seconds);
+    }
+
+    else if (count <= 9) {
+      $("#timer").text("00:0"+seconds);
+    }
   
 
     if (count === 0) {
 
-      alert("You ran out of time; the computer messes up your game board!");
+      // alert("You ran out of time; the Pikachu messes up your game board!");
+      shuffleAlert();
+      computerScore++;
+      $("#computerScore").text("Pikachu = " +computerScore);
+      $("#playerScore").text("You = " + playerScore);
       clearInterval(counter);
-      count = 60;
-      shuffleIds();
+      count = 30;
+      // shuffleIds();
 
     }    
   }
 }
 
+//Reset game button
+$("#resetGame").on("click", resetGame);
+
+function resetGame() {
+  console.log("clicked");
+  $lis.remove();
+  computerScore = 0;
+  playerScore = 0;
+  $("#computerScore").text("");
+  $("#playerScore").text("");
+  clearInterval(counter);
+  count = 30;
+  $("#timer").text("");
+}
+
+
+function shuffleAlert(){
+  $( "#shuffleAlert" ).dialog({
+    modal: true,
+    buttons: {
+      "Keep Playing": function() {
+        $( this ).dialog( "close" );
+        shuffleIds();
+      },
+      "Quit": function() {
+        $( this ).dialog( "close" );
+        resetGame();
+      }
+    }
+  });
+}
 
 
 
