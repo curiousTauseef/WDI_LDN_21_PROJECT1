@@ -69,6 +69,7 @@ $hardButton.on("click", function() {
     CreateSquares();
     shuffleIds();
   }
+  
 });
 
 
@@ -181,14 +182,14 @@ function shuffleIds() {
 }
 
 function resetClasses() {
-  $lis.attr("class", " blank animated infinite pulse");
+  $lis.attr("class", "blank animated infinite pulse");
 
   setTimeout(function(){
 
   $lis.attr("class", "square animated flipInY");
   $lis.filter("#square0").attr("class", "blank animated infinite pulse");
   
-  }, 500);
+  }, 250);
 }
 
 function activateTimer(){
@@ -196,7 +197,6 @@ function activateTimer(){
 
   function timer() {
     count = count - 1;
-    console.log(count);
     
     var seconds = count % 60;
     var minutes = Math.floor(count / 60);
@@ -205,13 +205,17 @@ function activateTimer(){
     hours %= 60;
 
     if (count>9) {
-      $("#timer").text("00:"+seconds);
+      $("#timer").text("00:"+seconds).css("color", "black");
     }
 
     else if (count <= 9) {
-      $("#timer").text("00:0"+seconds);
+      $("#timer").text("00:0"+seconds).css("color", "red");
     }
   
+  if(count===10) {
+    var warningSound = new Audio("sounds/pikaaaa.mp3");
+    warningSound.play();
+  }
 
     if (count === 0) {
       shuffleAlert();
@@ -238,6 +242,8 @@ function resetGame() {
   $("#playerScore").text("");
   clearInterval(counter);
   resetCount();
+  gridArray = [];
+  playerArray = [];
   $("#timer").text("");
 }
 
@@ -276,8 +282,5 @@ function winAlert(){
 function resetCount() {
   count = 60;
 } 
-
-
-
 
 
